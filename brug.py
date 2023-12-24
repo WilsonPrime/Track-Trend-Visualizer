@@ -10,7 +10,7 @@ LAND_COVER = [[[-123.0, 49.196], [-123.0, 49.324], [-123.306, 49.324], [-123.306
 
 
 
-
+print()
 
 INITIAL_VIEW_STATE = pydeck.ViewState(
   latitude=49.254,
