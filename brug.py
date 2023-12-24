@@ -2,7 +2,7 @@ import pydeck
 import requests
 
 geojson_data = requests.get(
-    "https://raw.githubusercontent.com/python-visualization/folium-example-data/main/world_countries.json"
+    "https://raw.githubusercontent.com/WilsonPrime/Visualizer/master/new.sjon"
 ).json()
 
 DATA_URL = "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/geojson/vancouver-blocks.json"
@@ -32,14 +32,14 @@ polygon = pydeck.Layer(
 
 geojson = pydeck.Layer(
     'GeoJsonLayer',
-    DATA_URL,
+    geojson_data,
     opacity=0.9,
     stroked=False,
     filled=True,
     extruded=True,
     wireframe=True,
-    get_elevation='properties.valuePerSqm / 20',
-    get_fill_color='[40, 15, properties.growth * 20]',
+    get_elevation=f"properties.artists.Coldplay",
+    get_fill_color='[40, 15, 30]',
     get_line_color=[40, 100, 50],
     pickable=True
 )

@@ -83,7 +83,7 @@ for countries in country_artists:
 
 updated_json_string = json.dumps(coordinate_table, indent=2)
 
-with open("new.sjon", "w") as file:
+with open("new.json", "w") as file:
     file.write(updated_json_string)
 
 
