@@ -14,10 +14,10 @@ token = token_call.json()['token']
 
 
 
-def top_artists_from_regions():
+def top_artists_from_regions(country_name):
     artists_listeners = {}
     country_top_1000 = {}
-    country_name = "United States"
+    #country_name = "United States"
     method = "geo.getTopArtists"
     url = f"{base_api_url}?method={method}&country={country_name}&api_key={api_key}&limit=1000&format=json"
     getsession_call = requests.get(url)
@@ -51,21 +51,22 @@ coordinate_table = json.loads(request_table.text)
 
 
 country_artists = []
-country_artists.append(top_artists_from_regions())
-#for country in pycountry.countries:
+#country_artists.append(top_artists_from_regions())
+for country in pycountry.countries:
  #   print(country.name)
-  #  country_artists.append(top_artists_from_regions(country.name))
+    country_artists.append(top_artists_from_regions(country.name))
 
-print(country_artists)
+#print(country_artists[0].values())
 
 for countries in country_artists:
+    #print(countries)
     current_country = list(countries.keys())[0]
 #print(coordinate_table['features'][0]['properties'])
     try:
         for object in coordinate_table['features']:
             if(object['properties']['name'] == current_country):
                 print("Did it break here?")
-                object['properties']['artists'] = "bro"
+                object['properties']['artists'] = countries[current_country]
             else:
                 pass
     except KeyError:
