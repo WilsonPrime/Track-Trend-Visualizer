@@ -63,7 +63,7 @@ def top_tracks_from_regions(country_name):
     except KeyError:
         print(f"Cannot find this country {country_name}")
         
-    #artists_listeners['Total Listeners'] = total_listeners
+    artists_listeners['Total Listeners'] = total_listeners
     
     country_top_1000_tracks[f"{country_name}"] = artists_listeners
     
