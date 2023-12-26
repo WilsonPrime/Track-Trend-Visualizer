@@ -3,7 +3,7 @@ import operator
 import json
 import pycountry
 
-api_key = "bruh"
+api_key = "4ce12ea4aaad9075ba836756e5d797ab"
 base_api_url = "https://ws.audioscrobbler.com/2.0/"
 
 api_token_call = f"https://ws.audioscrobbler.com/2.0/?method=auth.gettoken&api_key={api_key}&format=json"
@@ -44,6 +44,7 @@ def top_tracks_from_regions(country_name):
     total_listeners = 0
     artists_listeners = {}
     country_top_1000_tracks = {}
+    g = 0
     #country_name = "United States"
     method = "geo.getTopTracks"
     url = f"{base_api_url}?method={method}&country={country_name}&api_key={api_key}&limit=1000&format=json"
@@ -62,22 +63,17 @@ def top_tracks_from_regions(country_name):
                 current_artist_information.clear()
     except KeyError:
         print(f"Cannot find this country {country_name}")
+        g = 1
         
-    artists_listeners['Total Listeners'] = total_listeners
+    if(total_listeners == None or total_listeners == 0):
+        total_listeners = 1
     
-    country_top_1000_tracks[f"{country_name}"] = artists_listeners
-    
-    
-    #for tracks in top_tracks['tracks']['track']:
-    #    total_listeners += artists_listeners[tracks['artist']['name'][2]]
-        
-    
-    #for total_listeners in artists_listeners:
-    #    print(total_listeners)
-    
-    
-
-    return country_top_1000_tracks
+    if(g == 0):
+        artists_listeners['TotalListeners'] = total_listeners
+        country_top_1000_tracks[f"{country_name}"] = artists_listeners
+        return country_top_1000_tracks
+    else:
+        pass
 
 
 # This function will take in 
@@ -88,7 +84,9 @@ def update_json_file(function_tracks_or_region):
     #country_artists.append(top_tracks_from_regions("United States"))
     
     for country in pycountry.countries:
-        country_artists.append(function_tracks_or_region(country.name))
+        current_return = function_tracks_or_region(country.name)
+        if(current_return != None):
+            country_artists.append(function_tracks_or_region(country.name))
     
     
     for countries in country_artists:
@@ -102,7 +100,6 @@ def update_json_file(function_tracks_or_region):
                 if(object['properties']['name'] == current_country):
                     print("Did it break here?")
                     object['properties']['artists'] = countries[current_country]
-                    object['pro']
                 else:
                     pass
         except KeyError:
