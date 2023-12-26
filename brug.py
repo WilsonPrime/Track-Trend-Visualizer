@@ -2,7 +2,7 @@ import pydeck
 import requests
 
 geojson_data = requests.get(
-    "https://raw.githubusercontent.com/WilsonPrime/Visualizer/master/new.sjon"
+    "https://raw.githubusercontent.com/WilsonPrime/Visualizer/master/new2.json"
 ).json()
 
 DATA_URL = "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/geojson/vancouver-blocks.json"
@@ -30,22 +30,21 @@ polygon = pydeck.Layer(
     get_fill_color=[0, 0, 0, 20]
 )
 
+
 geojson = pydeck.Layer(
-    'GeoJsonLayer',
-    geojson_data,
-    opacity=0.9,
-    stroked=False,
-    filled=True,
-    extruded=True,
-    wireframe=True,
-    get_elevation=f"properties.artists.Coldplay",
-    get_fill_color='[40, 15, 30]',
-    get_line_color=[40, 100, 50],
-    pickable=True
-)
+            'GeoJsonLayer',
+            geojson_data,
+            #get_elevation= 50,
+            get_elevation=500,
+            get_fill_color=[255,0,0,150],
+            get_line_color=[40, 100, 50],
+            elevation_scale = 50,
+            pickable=True
+        )
+    
 
 r = pydeck.Deck(
-    layers=[polygon,geojson],
+    layers=[geojson],
     initial_view_state=INITIAL_VIEW_STATE)
 
 r.to_html("hello.html")

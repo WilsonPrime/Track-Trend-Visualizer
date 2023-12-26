@@ -2,8 +2,8 @@ import requests
 import base64
 
 def token_generation():
-    client_id = "b8d689ceb7b2439a8b059e95247583a1"
-    client_secret = "91ee8be24d4d4902a07e33cd18f3fe7c"
+    client_id = "bruh"
+    client_secret = "brug"
     credentials = base64.b64encode(f"{client_id}:{client_secret}".encode("utf-8")).decode("utf-8")
     token_url = "https://accounts.spotify.com/api/token"
 
