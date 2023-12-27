@@ -21,17 +21,13 @@ def top_artists_from_regions():
     getsession_call = requests.get(url)
     top_artists = getsession_call.json()
     
-    #print(top_artists)
-    #print(top_artists['topartists'])
+ 
     try:
         for values in top_artists['topartists']['artist']:
             artists_listeners[values['name']] = values['listeners']
             artists_listeners = dict(sorted(artists_listeners.items(), key=operator.itemgetter(1)))
     except KeyError:
         pass
-    
-    #for values2 in artists_listeners:
-        #print(f"{values2}: {artists_listeners[values2]}")
     
     country_top_1000[f"{country_name}"] = artists_listeners
     
@@ -111,8 +107,4 @@ def update_json_file(function_tracks_or_region):
     with open("newtrack.json", "w") as file:
         file.write(updated_json_string)
 
-# pass in a function name 
-#update_json_file()
-
 update_json_file(top_tracks_from_regions)
-

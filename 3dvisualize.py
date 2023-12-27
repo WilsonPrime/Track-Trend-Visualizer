@@ -49,12 +49,10 @@ minimum = min(total_listeners)
 maximum = max(total_listeners)
 
 
-
-# Create the GeoJSON layer with the extracted values
 geojson = pydeck.Layer(
     'GeoJsonLayer',
     geojson_data,
-    
+
     stroked=False,
     filled=True,
     extruded=True,
