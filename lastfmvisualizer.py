@@ -3,7 +3,7 @@ import operator
 import json
 import pycountry
 
-api_key = "4ce12ea4aaad9075ba836756e5d797ab"
+api_key = "bruh"
 base_api_url = "https://ws.audioscrobbler.com/2.0/"
 
 api_token_call = f"https://ws.audioscrobbler.com/2.0/?method=auth.gettoken&api_key={api_key}&format=json"
