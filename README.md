@@ -2,4 +2,5 @@ A program that uses the Last.fm API in order to track the top 1000 weekly songs 
 
 The last ran iteration can be found on Hello.html.
 
-![alt text]([http://url/to/img.png](https://imgur.com/a/TIM8e2V))
+![3dmap](https://github.com/user-attachments/assets/3d93a7ec-9101-4b09-90e8-0578c961038f)
+
